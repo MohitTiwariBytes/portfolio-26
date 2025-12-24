@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  background-color: var(--white);
+}
+
+@font-face {
+  font-family: "Tropical";
+  src: url("./assets/Fonts/Tropikal-Bold.woff2"), format("woff2");
+}
+
+:root {
+  --red: #DA4242;
+  --white: #FFFFD4;
+  --accent: #FEF6BB;
+  --black: black;
+  --red-stroke: #7D0303;
+  --green: #33C791;
+  --blue: #0D8DFF;
+}
+
+z {
+  opacity: 50%;
+}
+
+z#strike {
+  text-decoration: line-through;
+}

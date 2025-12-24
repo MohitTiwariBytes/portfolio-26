@@ -1,0 +1,51 @@
+.main-hero-section{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-section{
+    width: calc(100% - 80px);
+    height: 100%;
+    max-width: 2000px;
+}
+
+.top-txt-hero{
+    width: fit-content;
+    height: fit-content;
+    margin-top: 241px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.top-txt-hero h1{
+    font-size: clamp(50px, 8vw, 110px);
+    font-family: "Tropical";
+    font-weight: 1000;
+    letter-spacing: -0.05em;
+    max-width: 1439px;
+    line-height: 100%;
+}
+.top-txt-hero span{
+    font-size: 25px;
+    font-family: "Inter";
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    max-width: 860px;
+    line-height: 100%;
+}
+
+
+
+@media (max-width: 1060px) {
+    .hero-section{
+        width: calc(100% - 30px);
+    }
+
+    .top-txt-hero{
+        margin-top: 180px;
+    }
+}
