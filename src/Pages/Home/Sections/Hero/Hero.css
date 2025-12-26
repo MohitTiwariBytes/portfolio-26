@@ -29,7 +29,7 @@
     max-width: 1439px;
     line-height: 100%;
 }
-.top-txt-hero span{
+#desc-hero{
     font-size: 25px;
     font-family: "Inter";
     font-weight: 500;
@@ -38,7 +38,9 @@
     line-height: 100%;
 }
 
-
+.btn-hero{
+    margin-top: 20px;
+}
 
 @media (max-width: 1060px) {
     .hero-section{
@@ -47,5 +49,14 @@
 
     .top-txt-hero{
         margin-top: 180px;
+    }
+
+    #desc-hero{
+        font-size: 18px;
+        max-width: 90%;
+    }
+
+    .btn-hero {
+        margin-top: 10px;
     }
 }
