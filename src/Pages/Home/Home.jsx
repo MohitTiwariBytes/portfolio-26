@@ -8,6 +8,7 @@ export default function Home() {
     <div className="main-home-page">
       <Navbar></Navbar>
       <Hero></Hero>
+      <div className="seasid"></div>
     </div>
   );
 }
