@@ -35,7 +35,7 @@ export default function Hero() {
 
     const split1 = new SplitText(".top-txt-hero h1", {
       type: "words",
-      wordsClass: "word-top-h1",
+      wordsClass: "word-top-h1++",
     });
 
     gsap.fromTo(

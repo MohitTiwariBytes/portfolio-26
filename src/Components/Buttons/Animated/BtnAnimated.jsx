@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import "./BtnAnimated.css";
 
-export default function BtnAnimated({ sx, text, onClick }) {
+export default function BtnAnimated({ sx, text, onClick, fontSize }) {
   const renderChars = () =>
     [...text].map((char, i) => (
       <span
         key={i}
         className="btn-char"
         style={{
+          fontSize: fontSize,
           transition: "all 0.4s cubic-bezier(.26,.2,0,1.31)",
           whiteSpace: char === " " ? "pre" : "normal",
         }}

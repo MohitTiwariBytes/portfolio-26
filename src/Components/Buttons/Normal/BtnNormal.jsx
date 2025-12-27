@@ -5,7 +5,7 @@ import CustomEase from "gsap/CustomEase";
 
 gsap.registerPlugin(CustomEase);
 
-export default function BtnNormal({ onClick, text, sx }) {
+export default function BtnNormal({ onClick, text, sx, fontSize }) {
   const spanRef = useRef(null); // text span ref
   const wrapperRef = useRef(null);
   const buttonRef = useRef(null); // button ref
@@ -148,7 +148,11 @@ export default function BtnNormal({ onClick, text, sx }) {
       >
         <div ref={wrapperRef} className="wrap-btn">
           {[0, 1, 2, 3, 4].map((_, i) => (
-            <span key={i} ref={i === 0 ? spanRef : null}>
+            <span
+              style={{ fontSize: fontSize }}
+              key={i}
+              ref={i === 0 ? spanRef : null}
+            >
               {text}
             </span>
           ))}

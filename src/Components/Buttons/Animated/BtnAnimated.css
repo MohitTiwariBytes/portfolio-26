@@ -73,7 +73,7 @@
 
 /* hover animation — EXACT same motion */
 .btn-animated:hover .btn-char {
-    transform: translateY(-1.2em);
+    transform: translateY(-1.25em);
     text-shadow: 0px 1.2em 0px var(--white);
 }
 

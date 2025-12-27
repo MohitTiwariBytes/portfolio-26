@@ -67,6 +67,10 @@
     border: 2px solid var(--black);
 }
 
+.word-top-h110{
+    text-decoration: line-through;
+}
+
 @media (max-width: 1060px) {
     .hero-section{
         width: calc(100% - 30px);
