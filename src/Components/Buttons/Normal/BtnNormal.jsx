@@ -5,13 +5,32 @@ import CustomEase from "gsap/CustomEase";
 
 gsap.registerPlugin(CustomEase);
 
-export default function BtnNormal({ onClick, text, sx, fontSize }) {
-  const spanRef = useRef(null); // text span ref
-  const wrapperRef = useRef(null);
-  const buttonRef = useRef(null); // button ref
+export default function BtnNormal({
+  animated = true, // 👈 BOOLEAN FLAG
+  onClick,
+  text,
+  sx,
+  fontSize,
+}) {
+  // 🔴 EARLY RETURN — NO ANIMATION MODE
+  if (!animated) {
+    return (
+      <div className="main-btn-normal">
+        <button style={sx} onClick={onClick}>
+          <span style={{ fontSize }}>{text}</span>
+        </button>
+      </div>
+    );
+  }
 
-  const [textSize, setTextSize] = useState({ width: 0, height: 0 });
-  const [buttonSize, setButtonSize] = useState({ width: 0, height: 0 });
+  // ===============================
+  // ANIMATED VERSION (UNCHANGED)
+  // ===============================
+
+  const spanRef = useRef(null);
+  const wrapperRef = useRef(null);
+  const buttonRef = useRef(null);
+
   const [spanPositions, setSpanPositions] = useState({
     span1X: 0,
     span1Y: 0,
@@ -21,60 +40,44 @@ export default function BtnNormal({ onClick, text, sx, fontSize }) {
     span5X: 0,
   });
 
-  // Detect touch device
   const isTouchDevice =
     "ontouchstart" in window || navigator.maxTouchPoints > 0;
 
   useEffect(() => {
     CustomEase.create("bouncyEasing", "0.175, 0.885, 0.32, 1.275");
-    // Wait for layout to complete before measuring
+
     const measureSizes = () => {
-      if (spanRef.current) {
-        const rect = spanRef.current.getBoundingClientRect();
-        setTextSize({ width: rect.width, height: rect.height });
-      }
-
-      if (buttonRef.current) {
-        const rect = buttonRef.current.getBoundingClientRect();
-        setButtonSize({ width: rect.width, height: rect.height });
-      }
-
-      // Measure actual span positions
       const allSpans = wrapperRef.current?.querySelectorAll("span");
       if (allSpans && allSpans.length >= 5) {
-        const span1Rect = allSpans[0].getBoundingClientRect();
-        const span2Rect = allSpans[1].getBoundingClientRect();
-        const span3Rect = allSpans[2].getBoundingClientRect();
-        const span4Rect = allSpans[3].getBoundingClientRect();
-        const span5Rect = allSpans[4].getBoundingClientRect();
+        const s1 = allSpans[0].getBoundingClientRect();
+        const s2 = allSpans[1].getBoundingClientRect();
+        const s3 = allSpans[2].getBoundingClientRect();
+        const s4 = allSpans[3].getBoundingClientRect();
+        const s5 = allSpans[4].getBoundingClientRect();
 
         setSpanPositions({
-          span1X: span1Rect.x,
-          span1Y: span1Rect.y,
-          span2Y: span2Rect.y,
-          span3Y: span3Rect.y,
-          span4X: span4Rect.x,
-          span5X: span5Rect.x,
+          span1X: s1.x,
+          span1Y: s1.y,
+          span2Y: s2.y,
+          span3Y: s3.y,
+          span4X: s4.x,
+          span5X: s5.x,
         });
       }
     };
 
-    // Use requestAnimationFrame to ensure DOM is painted
     requestAnimationFrame(measureSizes);
   }, [text]);
 
-  // Function to detect mouse enter direction
   const getMouseEnterDirection = (e) => {
     const rect = e.currentTarget.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
-    const w = rect.width;
-    const h = rect.height;
 
     const top = y;
-    const bottom = h - y;
+    const bottom = rect.height - y;
     const left = x;
-    const right = w - x;
+    const right = rect.width - x;
 
     const min = Math.min(top, bottom, left, right);
     if (min === top) return "UP";
@@ -84,51 +87,31 @@ export default function BtnNormal({ onClick, text, sx, fontSize }) {
   };
 
   const handleMouseEnter = (e) => {
-    if (isTouchDevice) return; // disable effect on touch
-    const direction = getMouseEnterDirection(e);
+    if (isTouchDevice) return;
 
-    // Calculate dynamic offsets based on actual measured positions
-    const verticalOffsetDown = spanPositions.span1Y - spanPositions.span2Y;
-    const verticalOffsetUp = spanPositions.span3Y - spanPositions.span1Y;
-    const horizontalOffsetLeft = spanPositions.span1X - spanPositions.span4X;
-    const horizontalOffsetRight = spanPositions.span5X - spanPositions.span1X;
+    const dir = getMouseEnterDirection(e);
 
-    if (direction === "DOWN") {
-      gsap.to(wrapperRef.current, {
-        y: -verticalOffsetDown,
-        x: 0,
-        ease: "elastic(0.4, 0.4)",
-        duration: 0.7,
-      });
-    }
-    if (direction === "UP") {
-      gsap.to(wrapperRef.current, {
-        y: verticalOffsetUp,
-        x: 0,
-        ease: "elastic(0.4, 0.4)",
-        duration: 0.7,
-      });
-    }
-    if (direction === "LEFT") {
-      gsap.to(wrapperRef.current, {
-        x: horizontalOffsetLeft,
-        y: 0,
-        ease: "elastic(0.4, 0.4)",
-        duration: 0.7,
-      });
-    }
-    if (direction === "RIGHT") {
-      gsap.to(wrapperRef.current, {
-        x: -horizontalOffsetRight,
-        y: 0,
-        ease: "elastic(0.4, 0.4)",
-        duration: 0.7,
-      });
-    }
+    const vDown = spanPositions.span1Y - spanPositions.span2Y;
+    const vUp = spanPositions.span3Y - spanPositions.span1Y;
+    const hLeft = spanPositions.span1X - spanPositions.span4X;
+    const hRight = spanPositions.span5X - spanPositions.span1X;
+
+    const map = {
+      DOWN: { y: -vDown, x: 0 },
+      UP: { y: vUp, x: 0 },
+      LEFT: { x: hLeft, y: 0 },
+      RIGHT: { x: -hRight, y: 0 },
+    };
+
+    gsap.to(wrapperRef.current, {
+      ...map[dir],
+      ease: "elastic(0.4, 0.4)",
+      duration: 0.7,
+    });
   };
 
   const handleMouseLeave = () => {
-    if (isTouchDevice) return; // disable effect on touch
+    if (isTouchDevice) return;
     gsap.to(wrapperRef.current, {
       x: 0,
       y: 0,
@@ -148,11 +131,7 @@ export default function BtnNormal({ onClick, text, sx, fontSize }) {
       >
         <div ref={wrapperRef} className="wrap-btn">
           {[0, 1, 2, 3, 4].map((_, i) => (
-            <span
-              style={{ fontSize: fontSize }}
-              key={i}
-              ref={i === 0 ? spanRef : null}
-            >
+            <span key={i} ref={i === 0 ? spanRef : null} style={{ fontSize }}>
               {text}
             </span>
           ))}

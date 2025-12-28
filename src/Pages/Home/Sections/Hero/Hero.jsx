@@ -15,23 +15,23 @@ gsap.registerPlugin(SplitText, CustomEase);
 export default function Hero() {
   useEffect(() => {
     CustomEase.create("backEase", ".26,.2,0,1.31");
-    const setHeroMinHeight = () => {
-      const hero = document.querySelector(".main-hero-section");
-      if (!hero) return;
+    // const setHeroMinHeight = () => {
+    //   const hero = document.querySelector(".main-hero-section");
+    //   if (!hero) return;
 
-      const MIN_HEIGHT = 800;
-      const MAX_HEIGHT = 1000;
-      const viewportHeight = window.innerHeight;
+    //   const MIN_HEIGHT = 800;
+    //   const MAX_HEIGHT = 10000;
+    //   const viewportHeight = window.innerHeight;
 
-      const clampedHeight = Math.min(
-        Math.max(viewportHeight, MIN_HEIGHT),
-        MAX_HEIGHT
-      );
+    //   const clampedHeight = Math.min(
+    //     Math.max(viewportHeight, MIN_HEIGHT),
+    //     MAX_HEIGHT
+    //   );
 
-      hero.style.minHeight = `${clampedHeight}px`;
-    };
+    //   hero.style.minHeight = `${clampedHeight}px`;
+    // };
 
-    setHeroMinHeight(); // run once on load
+    // setHeroMinHeight(); // run once on load
 
     const split1 = new SplitText(".top-txt-hero h1", {
       type: "words",

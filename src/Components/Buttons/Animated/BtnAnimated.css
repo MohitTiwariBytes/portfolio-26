@@ -88,3 +88,30 @@
         width: 200px;
     }
 }
+
+/* Completely disable hover effects on touch devices */
+@media (hover: none),
+(pointer: coarse) {
+
+    /* Disable SVG movement */
+    .btn-left-icon svg {
+        filter: none !important;
+        transform: none !important;
+        transition: none !important;
+    }
+
+    /* Disable text animation */
+    .btn-char {
+        transform: none !important;
+        text-shadow: none !important;
+        transition: none !important;
+    }
+
+    /* Prevent hover rules from triggering */
+    .btn-animated:hover .btn-char,
+    .btn-animated:hover .btn-left-icon svg {
+        transform: none !important;
+        text-shadow: none !important;
+        filter: none !important;
+    }
+}
