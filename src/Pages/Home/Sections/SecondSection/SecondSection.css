@@ -144,8 +144,8 @@
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 99999999;
-    /* display: flex; */
-    display: none;
+    display: flex;
+    /* display: none; */
     width: 639px;
     height: fit-content;
     padding: 40px 35px;
@@ -153,6 +153,7 @@
     border: 1px solid var(--black);
     border-radius: 5px;
     flex-direction: column;
+    opacity: 0;
 }
 
 .top-modal-credits{
@@ -209,6 +210,13 @@
     opacity: 80%;
 }
 
+body.credits-open .main-home-page::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 9999999;
+}
+
 @media (max-width: 1060px) {
 
     .second-section {
@@ -234,6 +242,87 @@
 
     .work-txt{
         margin-top: 40px;
+    }
+
+    .modal-credits{
+        width: 400px;
+        padding: 25px 20px;
+    }
+
+    .credit h1{
+        font-size: 25px;
+        font-weight: 600;
+        font-family: "Inter";
+        letter-spacing: -0.05em;
+    }
+
+    .credit h1:nth-child(1){
+        font-size: 25px;
+        font-weight: 600;
+        font-family: "Inter";
+        letter-spacing: -0.05em;
+        opacity: 50%;
+    }
+    .credit h1:nth-child(2){
+        font-size: 25px;
+        font-weight: 600;
+        font-family: "Inter";
+        letter-spacing: -0.05em;
+        opacity: 80%;
+    }
+
+    .credit{
+        height: 20px;
+    }
+
+    .txt-modal-top h1 {
+        font-size: 40px;
+        font-family: "Tropical";
+        letter-spacing: -0.06em;
+        line-height: 100%;
+    }
+    
+    .txt-modal-top span {
+        font-size: 15px;
+        font-family: "Inter";
+        letter-spacing: -0.02em;
+        line-height: 100%;
+        opacity: 80%;
+        display: inline-block;
+        /* max-width: 140px; */
+    }
+}
+
+
+
+
+@media (max-width: 422px) {
+    .modal-credits{
+        width: calc(100% - 40px);
+    }
+    .credit{
+        height: 10px;
+    }
+    .credit h1{
+        font-size: 20px;
+        font-weight: 600;
+        font-family: "Inter";
+        letter-spacing: -0.05em;
+    }
+
+    .credit h1:nth-child(1){
+        font-size: 20px;
+        font-weight: 600;
+        font-family: "Inter";
+        letter-spacing: -0.05em;
+        opacity: 50%;
+    }
+    .credit h1:nth-child(2){
+        font-size: 20px;
+        font-weight: 600;
+        font-family: "Inter";
+        letter-spacing: -0.05em;
+        opacity: 80%;
     }
 }
 
