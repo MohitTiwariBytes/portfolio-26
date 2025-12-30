@@ -225,7 +225,6 @@ export default function SecondSection() {
     return () => {
       split.revert();
       tl.kill();
-      ScrollTrigger.refresh();
     };
   }, []);
 

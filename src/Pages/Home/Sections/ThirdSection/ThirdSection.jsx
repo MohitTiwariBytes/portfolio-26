@@ -143,8 +143,6 @@ export default function ThirdSection() {
       1
     );
 
-    ScrollTrigger.refresh();
-
     return () => {
       split.revert();
       tl.kill();

@@ -80,8 +80,6 @@ export default function FourthSection() {
       0.8
     );
 
-    ScrollTrigger.refresh();
-
     return () => {
       split.revert();
       tl.kill();
