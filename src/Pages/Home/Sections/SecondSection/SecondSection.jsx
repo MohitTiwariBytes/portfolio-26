@@ -165,7 +165,7 @@ export default function SecondSection() {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: ".main-second-section",
-        start: "top bottom-=250px",
+        start: "top bottom-=55%",
       },
     });
 

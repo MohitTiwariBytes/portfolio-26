@@ -47,7 +47,7 @@ export default function FourthSection() {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: ".main-fourth-section",
-        start: "top bottom-=250px",
+        start: "top bottom-=55%",
       },
     });
 
