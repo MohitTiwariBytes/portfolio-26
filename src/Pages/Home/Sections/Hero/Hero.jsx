@@ -117,10 +117,9 @@ export default function Hero() {
           </h1>
 
           <span id="desc-hero">
-            My name is Mohit Tiwari and I am a 14 year old creative web dev from
-            India, I help brands and people like you in making their website
-            stand out from the rest of the competition. No bullsh#t, No
-            shortcuts, Just real results.
+            My name is Mohit Tiwari, a creative web developer from India. I help
+            brands build websites that stand out from the competition. No
+            bullsh#t. No shortcuts. Just real results.
           </span>
 
           <div className="btn-hero">

@@ -12,6 +12,32 @@ import BtnAnimated from "../../../../Components/Buttons/Animated/BtnAnimated";
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
 export default function FourthSection() {
+  const baseRotation = 5;
+  const baseY = -100;
+
+  const services = [
+    {
+      title: "Web Development",
+      description:
+        "Fast, responsive, and built to perform—your website engineered without the messy technical nonsense.",
+      image: regrese,
+    },
+    {
+      title: "Web Design",
+      description:
+        "Designs that look good, feel right, and make your brand impossible to ignore.",
+      image: coding4good,
+    },
+    {
+      title: "The Full Package",
+      description:
+        "The all-in-one treatment: design and development working together to create something actually worth launching.",
+      image: quickcopies,
+    },
+  ];
+
+  const colors = ["var(--red)", "var(--green)", "var(--blue)"];
+
   useEffect(() => {
     const split = new SplitText(".top-txt-fourth-section h1", {
       type: "words",
@@ -54,77 +80,71 @@ export default function FourthSection() {
     return () => {
       split.revert();
       tl.kill();
-      ScrollTrigger.refresh();
     };
   }, []);
 
   useEffect(() => {
     const mm = ScrollTrigger.matchMedia();
+    const triggers = [];
 
     mm.add("(min-width: 1060px)", () => {
-      gsap.fromTo(
-        ".service.one",
-        {
-          boxShadow:
-            "rgba(0, 0, 0, 0.30) 0px 120px 180px -80px, rgba(0, 0, 0, 0.22) 0px 80px 140px -70px, rgba(0, 0, 0, 0.15) 0px 40px 80px -50px",
-        },
-        {
-          boxShadow:
-            "rgba(0, 0, 0, 0) 0px 40px 60px -30px,rgba(0, 0, 0, 0) 0px 24px 40px -28px,rgba(0, 0, 0, 0) 0px 12px 20px -18px",
-          scrollTrigger: {
-            trigger: ".service.one",
-            start: "top bottom",
-            end: "bottom center-=250px",
-            scrub: true,
-          },
-        }
-      );
+      services.forEach((_, index) => {
+        const serviceClass = `.service-${index}`;
+        const yTransform = baseY * index;
+        const rotation = baseRotation * index;
 
-      gsap.fromTo(
-        ".service.two",
-        {
-          transform:
-            "translate(0%, -73.6863%) translate3d(0px, 0px, 0px) rotate(-3.6843deg)",
-          boxShadow:
-            "rgba(0, 0, 0, 0.30) 0px 120px 180px -80px, rgba(0, 0, 0, 0.22) 0px 80px 140px -70px, rgba(0, 0, 0, 0.15) 0px 40px 80px -50px",
-        },
-        {
-          transform:
-            "translate(0%, 0%) translate3d(0px, 0px, 0px) rotate(0deg)",
-          boxShadow:
-            "rgba(0, 0, 0, 0) 0px 40px 60px -30px,rgba(0, 0, 0, 0) 0px 24px 40px -28px,rgba(0, 0, 0, 0) 0px 12px 20px -18px",
-          scrollTrigger: {
-            trigger: ".service.two",
-            start: "top bottom",
-            end: "bottom center-=250px",
-            scrub: true,
-          },
+        if (index === 0) {
+          const anim = gsap.fromTo(
+            serviceClass,
+            {
+              boxShadow: "3px 35px 46px -12px rgba(0,0,0,0.75)",
+            },
+            {
+              boxShadow:
+                "rgba(0, 0, 0, 0) 0px 40px 60px -30px,rgba(0, 0, 0, 0) 0px 24px 40px -28px,rgba(0, 0, 0, 0) 0px 12px 20px -18px",
+              scrollTrigger: {
+                trigger: serviceClass,
+                start: "top bottom",
+                end: "bottom center-=50px",
+                scrub: true,
+              },
+            }
+          );
+          triggers.push(anim.scrollTrigger);
+        } else {
+          const anim = gsap.fromTo(
+            serviceClass,
+            {
+              transform: `translate(0%, ${yTransform}%) translate3d(0px, 0px, 0px) rotate(-${rotation}deg)`,
+              boxShadow: "3px 35px 46px -12px rgba(0,0,0,0.75)",
+            },
+            {
+              transform:
+                "translate(0%, 0%) translate3d(0px, 0px, 0px) rotate(0deg)",
+              boxShadow:
+                "rgba(0, 0, 0, 0) 0px 40px 60px -30px,rgba(0, 0, 0, 0) 0px 24px 40px -28px,rgba(0, 0, 0, 0) 0px 12px 20px -18px",
+              scrollTrigger: {
+                trigger: serviceClass,
+                start: "top bottom",
+                end: "bottom center-=50px",
+                scrub: true,
+              },
+            }
+          );
+          triggers.push(anim.scrollTrigger);
         }
-      );
-
-      gsap.fromTo(
-        ".service.three",
-        {
-          transform:
-            "translate(0%, -147.373%) translate3d(0px, 0px, 0px) rotate(-7.3686deg)",
-          boxShadow:
-            "rgba(0, 0, 0, 0.30) 0px 120px 180px -80px, rgba(0, 0, 0, 0.22) 0px 80px 140px -70px, rgba(0, 0, 0, 0.15) 0px 40px 80px -50px",
-        },
-        {
-          transform:
-            "translate(0%, 0%) translate3d(0px, 0px, 0px) rotate(0deg)",
-          boxShadow:
-            "rgba(0, 0, 0, 0) 0px 40px 60px -30px,rgba(0, 0, 0, 0) 0px 24px 40px -28px,rgba(0, 0, 0, 0) 0px 12px 20px -18px",
-          scrollTrigger: {
-            trigger: ".service.two",
-            start: "top bottom",
-            end: "bottom center-=250px",
-            scrub: true,
-          },
-        }
-      );
+      });
     });
-  }, []);
+
+    ScrollTrigger.refresh();
+
+    return () => {
+      triggers.forEach((trigger) => {
+        if (trigger) trigger.kill();
+      });
+      mm.revert();
+    };
+  }, [services]);
 
   return (
     <div className="main-fourth-section">
@@ -135,59 +155,30 @@ export default function FourthSection() {
         </div>
 
         <div className="services-bottom">
-          <div className="service one">
-            <div className="service-left">
-              <h1>Web Development</h1>
-              <span id="service-span">
-                Fast, responsive, and built to perform—your website engineered
-                without the messy technical nonsense.
-              </span>
-              <BtnAnimated
-                sx={{ width: "256px", height: "54px" }}
-                fontSize={"25px"}
-                text={"Start  a project"}
-              />
+          {services.map((service, index) => (
+            <div
+              key={index}
+              className={`service service-${index}`}
+              style={{
+                zIndex: services.length - index + 1,
+                transformOrigin: index > 0 ? "100% 0%" : undefined,
+                backgroundColor: colors[index % colors.length],
+              }}
+            >
+              <div className="service-left">
+                <h1>{service.title}</h1>
+                <span id="service-span">{service.description}</span>
+                <BtnAnimated
+                  sx={{ width: "256px", height: "54px" }}
+                  fontSize={"25px"}
+                  text={"Start  a project"}
+                />
+              </div>
+              <div className="service-right">
+                <img src={service.image} alt="" />
+              </div>
             </div>
-            <div className="service-right">
-              <img src={regrese} alt="" />
-            </div>
-          </div>
-
-          <div className="service two">
-            <div className="service-left">
-              <h1>Web Design</h1>
-              <span id="service-span">
-                Designs that look good, feel right, and make your brand
-                impossible to ignore.
-              </span>
-              <BtnAnimated
-                sx={{ width: "256px", height: "54px" }}
-                fontSize={"25px"}
-                text={"Start  a project"}
-              />
-            </div>
-            <div className="service-right">
-              <img src={coding4good} alt="" />
-            </div>
-          </div>
-
-          <div className="service three">
-            <div className="service-left">
-              <h1>The Full Package</h1>
-              <span id="service-span">
-                The all-in-one treatment: design and development working
-                together to create something actually worth launching.
-              </span>
-              <BtnAnimated
-                sx={{ width: "256px", height: "54px" }}
-                fontSize={"25px"}
-                text={"Start  a project"}
-              />
-            </div>
-            <div className="service-right">
-              <img src={quickcopies} alt="" />
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>
