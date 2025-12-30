@@ -50,8 +50,7 @@ export default function FourthSection() {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: ".main-fourth-section",
-        start: () =>
-          window.innerWidth < 768 ? "top 65%" : "top bottom-=250px",
+        start: "top 50%",
       },
     });
 

@@ -99,8 +99,7 @@ export default function ThirdSection() {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: ".main-third-section",
-        start: () =>
-          window.innerWidth < 768 ? "top 65%" : "top bottom-=250px",
+        start: "top 50%",
       },
     });
 
