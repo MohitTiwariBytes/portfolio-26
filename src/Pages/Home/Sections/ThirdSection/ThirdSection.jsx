@@ -9,6 +9,10 @@ import SplitText from "gsap/SplitText";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
+ScrollTrigger.config({
+  ignoreMobileResize: true,
+});
+
 const REVIEWS = [
   {
     name: "Arnav Ravinder",
@@ -42,19 +46,11 @@ export default function ThirdSection() {
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth <= 572) {
-        setButtonStyle({
-          fontSize: 18,
-          width: "170px",
-          height: "40px",
-        });
-      } else {
-        setButtonStyle({
-          fontSize: 25,
-          width: "232px",
-          height: "54px",
-        });
-      }
+      setButtonStyle(
+        window.innerWidth <= 572
+          ? { fontSize: 18, width: "170px", height: "40px" }
+          : { fontSize: 25, width: "232px", height: "54px" }
+      );
     };
 
     handleResize();
@@ -62,7 +58,7 @@ export default function ThirdSection() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  function syncReviewHeights() {
+  const syncReviewHeights = () => {
     const reviews = document.querySelectorAll(".review");
     if (!reviews.length) return;
 
@@ -76,14 +72,23 @@ export default function ThirdSection() {
     reviews.forEach((r) => {
       r.style.height = `${maxHeight}px`;
     });
-  }
+  };
 
-  window.addEventListener("load", syncReviewHeights);
+  useEffect(() => {
+    window.addEventListener("load", syncReviewHeights);
 
-  window.addEventListener("resize", () => {
-    clearTimeout(window.__reviewResizeTimeout);
-    window.__reviewResizeTimeout = setTimeout(syncReviewHeights, 100);
-  });
+    const resizeHandler = () => {
+      clearTimeout(window.__reviewResizeTimeout);
+      window.__reviewResizeTimeout = setTimeout(syncReviewHeights, 100);
+    };
+
+    window.addEventListener("resize", resizeHandler);
+
+    return () => {
+      window.removeEventListener("load", syncReviewHeights);
+      window.removeEventListener("resize", resizeHandler);
+    };
+  }, []);
 
   useEffect(() => {
     const split = new SplitText(".top-txt-third-section h1", {
@@ -94,7 +99,8 @@ export default function ThirdSection() {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: ".main-third-section",
-        start: "top bottom-=55%",
+        start: () =>
+          window.innerWidth < 768 ? "top 65%" : "top bottom-=250px",
       },
     });
 
@@ -123,6 +129,7 @@ export default function ThirdSection() {
       },
       0.8
     );
+
     tl.fromTo(
       ".review",
       { opacity: 0, y: 20, filter: "blur(2px)" },
@@ -137,10 +144,11 @@ export default function ThirdSection() {
       1
     );
 
+    ScrollTrigger.refresh();
+
     return () => {
       split.revert();
       tl.kill();
-      ScrollTrigger.refresh();
     };
   }, []);
 

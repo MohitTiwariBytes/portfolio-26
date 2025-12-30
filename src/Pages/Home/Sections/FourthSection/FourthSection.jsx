@@ -6,10 +6,13 @@ import SplitText from "gsap/SplitText";
 import regrese from "../../../../assets/Images/regreseProjectPhoto.webp";
 import quickcopies from "../../../../assets/Images/quickCopiesProjectPhoto.webp";
 import coding4good from "../../../../assets/Images/coding4GoodProjectPhoto.webp";
-
 import BtnAnimated from "../../../../Components/Buttons/Animated/BtnAnimated";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
+
+ScrollTrigger.config({
+  ignoreMobileResize: true,
+});
 
 export default function FourthSection() {
   const baseRotation = 5;
@@ -47,7 +50,8 @@ export default function FourthSection() {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: ".main-fourth-section",
-        start: "top bottom-=55%",
+        start: () =>
+          window.innerWidth < 768 ? "top 65%" : "top bottom-=250px",
       },
     });
 
@@ -77,6 +81,8 @@ export default function FourthSection() {
       0.8
     );
 
+    ScrollTrigger.refresh();
+
     return () => {
       split.revert();
       tl.kill();
@@ -93,55 +99,36 @@ export default function FourthSection() {
         const yTransform = baseY * index;
         const rotation = baseRotation * index;
 
-        if (index === 0) {
-          const anim = gsap.fromTo(
-            serviceClass,
-            {
-              boxShadow: "3px 35px 46px -12px rgba(0,0,0,0.75)",
-            },
-            {
-              boxShadow:
-                "rgba(0, 0, 0, 0) 0px 40px 60px -30px,rgba(0, 0, 0, 0) 0px 24px 40px -28px,rgba(0, 0, 0, 0) 0px 12px 20px -18px",
-              scrollTrigger: {
-                trigger: serviceClass,
-                start: "top bottom",
-                end: "bottom center-=50px",
-                scrub: true,
+        const anim = gsap.fromTo(
+          serviceClass,
+          index === 0
+            ? { boxShadow: "3px 35px 46px -12px rgba(0,0,0,0.75)" }
+            : {
+                transform: `translate(0%, ${yTransform}%) translate3d(0px,0px,0px) rotate(-${rotation}deg)`,
+                boxShadow: "3px 35px 46px -12px rgba(0,0,0,0.75)",
               },
-            }
-          );
-          triggers.push(anim.scrollTrigger);
-        } else {
-          const anim = gsap.fromTo(
-            serviceClass,
-            {
-              transform: `translate(0%, ${yTransform}%) translate3d(0px, 0px, 0px) rotate(-${rotation}deg)`,
-              boxShadow: "3px 35px 46px -12px rgba(0,0,0,0.75)",
+          {
+            transform:
+              "translate(0%, 0%) translate3d(0px,0px,0px) rotate(0deg)",
+            boxShadow:
+              "rgba(0,0,0,0) 0px 40px 60px -30px,rgba(0,0,0,0) 0px 24px 40px -28px,rgba(0,0,0,0) 0px 12px 20px -18px",
+            scrollTrigger: {
+              trigger: serviceClass,
+              start: "top bottom",
+              end: "bottom center-=50px",
+              scrub: true,
             },
-            {
-              transform:
-                "translate(0%, 0%) translate3d(0px, 0px, 0px) rotate(0deg)",
-              boxShadow:
-                "rgba(0, 0, 0, 0) 0px 40px 60px -30px,rgba(0, 0, 0, 0) 0px 24px 40px -28px,rgba(0, 0, 0, 0) 0px 12px 20px -18px",
-              scrollTrigger: {
-                trigger: serviceClass,
-                start: "top bottom",
-                end: "bottom center-=50px",
-                scrub: true,
-              },
-            }
-          );
-          triggers.push(anim.scrollTrigger);
-        }
+          }
+        );
+
+        triggers.push(anim.scrollTrigger);
       });
     });
 
     ScrollTrigger.refresh();
 
     return () => {
-      triggers.forEach((trigger) => {
-        if (trigger) trigger.kill();
-      });
+      triggers.forEach((t) => t && t.kill());
       mm.revert();
     };
   }, [services]);
