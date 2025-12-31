@@ -12,6 +12,58 @@ export default function CTA() {
   useEffect(() => {
     const mm = gsap.matchMedia();
 
+    const split = new SplitText(".cta h1", {
+      type: "words",
+      wordsClass: "word-top-cta-section",
+    });
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".main-cta",
+        start: "top 50%",
+        end: "top top",
+        scrub: true,
+      },
+    });
+
+    tl.fromTo(
+      ".word-top-cta-section",
+      { scaleY: 0.7, opacity: 0, filter: "blur(2px)" },
+      {
+        scaleY: 1,
+        opacity: 1,
+        filter: "blur(0px)",
+        duration: 0.6,
+        ease: "back.out(1.6)",
+        stagger: 0.02,
+      }
+    );
+
+    tl.fromTo(
+      ".btn-cta",
+      { opacity: 0, y: 20, filter: "blur(2px)" },
+      {
+        opacity: 1,
+        y: 0,
+        filter: "blur(0px)",
+        duration: 0.4,
+        ease: "back.out(1.6)",
+      },
+      0.8
+    );
+    tl.fromTo(
+      ".arrows-grp",
+      { opacity: 0, y: 20, filter: "blur(2px)" },
+      {
+        opacity: 1,
+        y: 0,
+        filter: "blur(0px)",
+        duration: 0.4,
+        ease: "back.out(1.6)",
+      },
+      1
+    );
+
     mm.add("(min-width: 817px)", () => {
       gsap.fromTo(
         "#mascot-mohit",
@@ -57,10 +109,12 @@ export default function CTA() {
         <img id="mascot-mohit" src={mascot} alt="Mohit's mascot" />
         <div className="cta">
           <h1>Ready to build something that’s actually worth looking at?</h1>
-          <BtnNormal
-            sx={{ width: "173px", height: "53px" }}
-            text={"Get in Touch"}
-          ></BtnNormal>
+          <div className="btn-cta">
+            <BtnNormal
+              sx={{ width: "173px", height: "53px" }}
+              text={"Get in Touch"}
+            ></BtnNormal>
+          </div>
         </div>
         <div className="arrows-grp">
           <svg

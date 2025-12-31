@@ -170,6 +170,16 @@
         gap: 20px;
     }
 
+    .service-inner {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        max-width: 2000px;
+        gap: 20px;
+    }
+
     .service-right img{
         width: 100%;
         height: 100%;
