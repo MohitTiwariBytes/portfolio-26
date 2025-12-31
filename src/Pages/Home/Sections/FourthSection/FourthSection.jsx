@@ -42,6 +42,12 @@ export default function FourthSection() {
   const colors = ["var(--red)", "var(--green)", "var(--blue)"];
 
   useEffect(() => {
+    const isMobile = window.innerWidth <= 768;
+
+    if (isMobile) {
+      return;
+    }
+
     const split = new SplitText(".top-txt-fourth-section h1", {
       type: "words",
       wordsClass: "word-top-fourth-section",
@@ -87,6 +93,12 @@ export default function FourthSection() {
   }, []);
 
   useEffect(() => {
+    const isMobile = window.innerWidth <= 768;
+
+    if (isMobile) {
+      return;
+    }
+
     const mm = ScrollTrigger.matchMedia();
     const triggers = [];
 
@@ -149,17 +161,19 @@ export default function FourthSection() {
                 backgroundColor: colors[index % colors.length],
               }}
             >
-              <div className="service-left">
-                <h1>{service.title}</h1>
-                <span id="service-span">{service.description}</span>
-                <BtnAnimated
-                  sx={{ width: "256px", height: "54px" }}
-                  fontSize={"25px"}
-                  text={"Start  a project"}
-                />
-              </div>
-              <div className="service-right">
-                <img src={service.image} alt="" />
+              <div className="service-inner">
+                <div className="service-left">
+                  <h1>{service.title}</h1>
+                  <span id="service-span">{service.description}</span>
+                  <BtnAnimated
+                    sx={{ width: "256px", height: "54px" }}
+                    fontSize={"25px"}
+                    text={"Start  a project"}
+                  />
+                </div>
+                <div className="service-right">
+                  <img src={service.image} alt="" />
+                </div>
               </div>
             </div>
           ))}

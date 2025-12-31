@@ -157,6 +157,12 @@ export default function SecondSection() {
   }, [isCreditsOpen]);
 
   useEffect(() => {
+    const isMobile = window.innerWidth <= 768;
+
+    if (isMobile) {
+      return;
+    }
+
     const split = new SplitText(".top-txt-second-section h1", {
       type: "words",
       wordsClass: "word-top-second-section",

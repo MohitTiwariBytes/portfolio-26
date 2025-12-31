@@ -19,21 +19,21 @@ const REVIEWS = [
     image: arnav,
     title: "Founder, Coding4Good",
     projectLink: "https://coding4good.in",
-    review: `“Mohit is a very talented young freelancer and they can make
+    review: `"Mohit is a very talented young freelancer and they can make
     responsive websites across designs. They work very quickly and
     communicate/iterate well. He would be a good asset to any team
-    // good freelancer to build your own site!”`,
+    // good freelancer to build your own site!"`,
   },
   {
     name: "Haritos Constantinos",
     image: haritos,
     title: "Founder & Director @thedatabase.co",
     projectLink: "https://re-regrese.cz",
-    review: `“Mohit Tiwari brought incredible effort and a genuine will to
+    review: `"Mohit Tiwari brought incredible effort and a genuine will to
     collaborate throughout our project. He took the time to deeply
     understand the project's needs and delivered creative,
     thoughtful solutions that elevated the outcome. A true partner
-    in every sense.”`,
+    in every sense."`,
   },
 ];
 
@@ -91,6 +91,12 @@ export default function ThirdSection() {
   }, []);
 
   useEffect(() => {
+    const isMobile = window.innerWidth <= 768;
+
+    if (isMobile) {
+      return;
+    }
+
     const split = new SplitText(".top-txt-third-section h1", {
       type: "words",
       wordsClass: "word-top-third-section",
@@ -153,7 +159,7 @@ export default function ThirdSection() {
     <div className="main-third-section">
       <div className="third-section">
         <div className="top-txt-third-section">
-          <h1>Here’s what they say...</h1>
+          <h1>Here's what they say...</h1>
           <span id="desc-third-section">
             What my partners think about working with me.
           </span>

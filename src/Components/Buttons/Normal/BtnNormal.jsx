@@ -47,23 +47,32 @@ export default function BtnNormal({
     CustomEase.create("bouncyEasing", "0.175, 0.885, 0.32, 1.275");
 
     const measureSizes = () => {
-      const allSpans = wrapperRef.current?.querySelectorAll("span");
-      if (allSpans && allSpans.length >= 5) {
-        const s1 = allSpans[0].getBoundingClientRect();
-        const s2 = allSpans[1].getBoundingClientRect();
-        const s3 = allSpans[2].getBoundingClientRect();
-        const s4 = allSpans[3].getBoundingClientRect();
-        const s5 = allSpans[4].getBoundingClientRect();
+      const wrapper = wrapperRef.current;
+      if (!wrapper) return;
 
-        setSpanPositions({
-          span1X: s1.x,
-          span1Y: s1.y,
-          span2Y: s2.y,
-          span3Y: s3.y,
-          span4X: s4.x,
-          span5X: s5.x,
-        });
-      }
+      const spans = wrapper.querySelectorAll("span");
+      if (spans.length < 5) return;
+
+      const wrapperRect = wrapper.getBoundingClientRect();
+      const centerX = wrapperRect.left + wrapperRect.width / 2;
+      const centerY = wrapperRect.top + wrapperRect.height / 2;
+
+      const s1 = spans[0].getBoundingClientRect();
+      const s2 = spans[1].getBoundingClientRect();
+      const s3 = spans[2].getBoundingClientRect();
+      const s4 = spans[3].getBoundingClientRect();
+      const s5 = spans[4].getBoundingClientRect();
+
+      setSpanPositions({
+        span1X: s1.left + s1.width / 2 - centerX,
+        span1Y: s1.top + s1.height / 2 - centerY,
+
+        span2Y: s2.top + s2.height / 2 - centerY,
+        span3Y: s3.top + s3.height / 2 - centerY,
+
+        span4X: s4.left + s4.width / 2 - centerX,
+        span5X: s5.left + s5.width / 2 - centerX,
+      });
     };
 
     requestAnimationFrame(measureSizes);
