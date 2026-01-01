@@ -138,12 +138,20 @@
     color: black;
 }
 
-.modal-credits{
+.wrapper-modal-credits{
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 99999999;
+        z-index: 99999999;
+        pointer-events: none;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+}
+
+.modal-credits{
     display: flex;
     /* display: none; */
     width: 639px;

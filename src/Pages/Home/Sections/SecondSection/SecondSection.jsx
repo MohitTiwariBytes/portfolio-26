@@ -237,43 +237,45 @@ export default function SecondSection() {
   return (
     <div className="main-second-section main-home-page">
       {/* MODAL — NOT MOVED */}
-      <div
-        className="modal-credits"
-        ref={modalRef}
-        style={{ pointerEvents: isCreditsOpen ? "auto" : "none" }}
-      >
-        <div className="top-modal-credits">
-          <div className="txt-modal-top">
-            <h1>Credits</h1>
-            <span>Appreciation and acknowledgements</span>
+      <div className="wrapper-modal-credits">
+        <div
+          className="modal-credits"
+          ref={modalRef}
+          style={{ pointerEvents: isCreditsOpen ? "auto" : "none" }}
+        >
+          <div className="top-modal-credits">
+            <div className="txt-modal-top">
+              <h1>Credits</h1>
+              <span>Appreciation and acknowledgements</span>
+            </div>
+
+            <svg
+              width="44"
+              height="44"
+              viewBox="0 0 44 44"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              onClick={() => setIsCreditsOpen(false)}
+              style={{ cursor: "pointer" }}
+            >
+              <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M34.2918 37.2083L35.7501 38.6669L38.667 35.75L37.2084 34.2916L24.9169 21.9999L37.2084 9.70835L38.667 8.24994L35.7501 5.33313L34.2918 6.79154L22.0001 19.0831L9.70847 6.79154L8.25007 5.33313L5.33325 8.24994L6.79166 9.70835L19.0833 21.9999L6.79166 34.2916L5.33325 35.75L8.25007 38.6669L9.70847 37.2083L22.0001 24.9168L34.2918 37.2083Z"
+                fill="black"
+              />
+            </svg>
           </div>
 
-          <svg
-            width="44"
-            height="44"
-            viewBox="0 0 44 44"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            onClick={() => setIsCreditsOpen(false)}
-            style={{ cursor: "pointer" }}
-          >
-            <path
-              fillRule="evenodd"
-              clipRule="evenodd"
-              d="M34.2918 37.2083L35.7501 38.6669L38.667 35.75L37.2084 34.2916L24.9169 21.9999L37.2084 9.70835L38.667 8.24994L35.7501 5.33313L34.2918 6.79154L22.0001 19.0831L9.70847 6.79154L8.25007 5.33313L5.33325 8.24994L6.79166 9.70835L19.0833 21.9999L6.79166 34.2916L5.33325 35.75L8.25007 38.6669L9.70847 37.2083L22.0001 24.9168L34.2918 37.2083Z"
-              fill="black"
-            />
-          </svg>
-        </div>
-
-        <div className="credits-main">
-          {activeCredits &&
-            Object.entries(activeCredits).map(([role, name]) => (
-              <div className="credit" key={role}>
-                <h1>{role}:</h1>
-                <h1>{name}</h1>
-              </div>
-            ))}
+          <div className="credits-main">
+            {activeCredits &&
+              Object.entries(activeCredits).map(([role, name]) => (
+                <div className="credit" key={role}>
+                  <h1>{role}:</h1>
+                  <h1>{name}</h1>
+                </div>
+              ))}
+          </div>
         </div>
       </div>
 
