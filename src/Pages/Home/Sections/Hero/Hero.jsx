@@ -9,6 +9,7 @@ import coding4good from "../../../../assets/Images/coding4GoodProjectPhoto.webp"
 import Marquee from "../../../../Components/MarqueeDirectional/Marquee";
 import SplitText from "gsap/SplitText";
 import CustomEase from "gsap/CustomEase";
+import { Link } from "react-router-dom";
 
 gsap.registerPlugin(SplitText, CustomEase);
 

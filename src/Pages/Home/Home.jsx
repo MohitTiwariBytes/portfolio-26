@@ -7,6 +7,7 @@ import ThirdSection from "./Sections/ThirdSection/ThirdSection";
 import FourthSection from "./Sections/FourthSection/FourthSection";
 import FifthSection from "./Sections/FifthSection/FifthSection";
 import CTA from "./Sections/CTA/CTA";
+import gsap from "gsap";
 
 export default function Home() {
   return (

@@ -11,7 +11,7 @@ export default function LinkText({ text, to, sx }) {
         key={i}
         style={{
           display: "inline-block",
-          transition: "all 0.4s cubic-bezier(.26,.2,0,1.31)",
+          transition: "all 0.35s cubic-bezier(.26,.2,0,1.31)",
           transitionDelay: `${i * offsetIncrement}s`,
           whiteSpace: char === " " ? "pre" : "normal",
         }}
