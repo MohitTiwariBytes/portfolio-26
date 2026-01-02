@@ -25,6 +25,9 @@
     display: none;
 }
 
+.logo-left{
+    cursor: pointer;
+}
 
 .link-menu{
     display: flex;

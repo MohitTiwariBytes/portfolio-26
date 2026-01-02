@@ -7,11 +7,14 @@ import ThirdSection from "./Sections/ThirdSection/ThirdSection";
 import FourthSection from "./Sections/FourthSection/FourthSection";
 import FifthSection from "./Sections/FifthSection/FifthSection";
 import CTA from "./Sections/CTA/CTA";
+import Footer from "./Sections/Footer/Footer";
+import FormContact from "../../Components/Forms/FormContact/FormContact";
 import gsap from "gsap";
 
 export default function Home() {
   return (
     <div className="main-home-page">
+      <FormContact></FormContact>
       <Navbar></Navbar>
       <Hero></Hero>
       <SecondSection></SecondSection>
@@ -19,6 +22,7 @@ export default function Home() {
       <FourthSection></FourthSection>
       <FifthSection></FifthSection>
       <CTA></CTA>
+      <Footer></Footer>
     </div>
   );
 }

@@ -39,6 +39,7 @@
     border: 1px solid var(--black);
     z-index: 2;
     margin-top: 100px;
+    border-radius: 5px;
 }
 
 .cta h1{

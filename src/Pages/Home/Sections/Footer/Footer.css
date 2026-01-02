@@ -1,0 +1,209 @@
+.main-footer-section{
+    width: 100%;
+    height: fit-content;
+    min-height: 512px;
+    background: var(--accent);
+    display: flex;
+    justify-content: center;
+    border-top: 1px solid var(--black);
+}
+
+.footer{
+    height: 512px;
+    width: 100%;
+    max-width: 2000px;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    justify-content: space-between;
+}
+
+.left-footer{
+    max-width: 639px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-top: 40px;
+    margin-left: 40px;
+}
+
+.left-top-footer h1{
+    font-family: "Tropical";
+    font-size: 50px;
+    letter-spacing: -0.06em;
+    line-height: 110%;
+}
+
+.left-top-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.copy-email{
+    margin-top: 60px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.email{
+    height: 44px;
+    width: fit-content;
+    padding: 8px;
+    background-color: var(--black);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid var(--red-stroke);
+    border-radius: 5px;
+}
+
+.email span{
+    font-size: 20px;
+    font-family: "Inter";
+    color: var(--white);
+    font-weight: 600;
+    letter-spacing: -0.04em;
+}
+
+.copy-email-button{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    height: 44px;
+    width: fit-content;
+    padding: 8px;
+    font-size: 20px;
+    font-family: "Inter";
+    font-weight: 600;
+    letter-spacing: -0.04em;
+    border: 2px solid var(--red-stroke);
+    border-radius: 5px;
+    background-color: var(--white);
+    cursor: pointer;
+}
+
+.copy-email-button svg{
+    width: 18px;
+    height: 18px;
+}
+
+.links-bottom{
+    margin-top: 30px;
+    width: 756px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    height: fit-content;
+    align-items: center;
+    
+}
+
+.links-bottom span{
+    font-size: 25px;
+    font-weight: 600;
+    font-family: "Inter";
+    letter-spacing: -0.05em;
+    line-height: 110%;
+    opacity: 70%;
+}
+.links-bottom a{
+    font-size: 25px;
+    font-weight: 600;
+    font-family: "Inter";
+    letter-spacing: -0.05em;
+    line-height: 110%;
+    color: var(--black);
+    text-underline-offset: 0.1em;
+}
+
+.links-bottom a:hover{
+    text-decoration: none;
+}
+
+.divide-small{
+    height: 24px;
+    width: 1px;
+    background-color: var(--black);
+}
+
+.logo-right{
+    width: auto;
+    height: 450px;
+    transform: rotate(-25.62deg);
+    margin-top: 120px;
+    margin-left: 8vw;
+}
+
+.link-main{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+}
+
+@media (max-width: 1320px) {
+    .logo-right svg{
+        width: 500px;
+        
+    }
+
+    .logo-right{
+        margin-top: 60px;
+        margin-left: 8vw;
+    }
+
+}
+
+@media (max-width: 1180px) {
+    .footer{
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .logo-right{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        transform: rotate(-15.72deg);
+        margin-top: 20px;
+        margin-left: -20px;
+    }
+
+    .left-footer{
+        margin-left: 20px;
+    }
+
+    .left-top-footer h1{
+        width: 90%;
+        font-size: 40px;
+    }
+
+    .links-bottom span{
+        font-size: 20px;
+    }
+    .links-bottom a{
+        font-size: 20px;
+    }
+
+    .copy-email-button{
+        font-size: 15px;
+    }
+    .email span{
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 800px) {
+    .links-bottom{
+        flex-direction: column;
+        align-items: start;
+    }
+
+    .divide-small{
+        display: none;
+    }
+}

@@ -70,3 +70,7 @@ z#strike {
   width: 100%;
   height: 100vh;
 }
+
+#red-txt{
+  color: var(--red);
+}

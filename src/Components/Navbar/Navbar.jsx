@@ -4,6 +4,7 @@ import gsap from "gsap";
 import LinkText from "../LinkText/LinkText";
 import CustomEase from "gsap/CustomEase";
 import BtnNormal from "../Buttons/Normal/BtnNormal";
+import { openFormModal } from "../Forms/FormContact/FormContact";
 
 gsap.registerPlugin(CustomEase);
 
@@ -83,7 +84,7 @@ export default function Navbar() {
   return (
     <div className="main-navbar">
       <div className="navbar">
-        <div className="logo-left">
+        <div onClick={() => window.location.replace("/")} className="logo-left">
           <svg
             width="78"
             height="98"
@@ -92,16 +93,17 @@ export default function Navbar() {
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              ref={path1Ref}
-              d="M19.052 0.391506C19.052 51.9731 44.3106 41.2731 63.859 20.2315C66.178 17.7354 71.2842 20.296 70.3566 23.5744L49.981 95.5915"
+              d="
+      M19.052 0.391506
+      C19.052 51.9731 44.3106 41.2731 63.859 20.2315
+      C66.178 17.7354 71.2842 20.296 70.3566 23.5744
+      L49.981 95.5915
+      M19.052 1.04957
+      L7.4262 83.3076
+    "
               stroke="#DA4242"
               strokeWidth="15"
-            />
-            <path
-              ref={path2Ref}
-              d="M19.052 1.04957L7.4262 83.3076"
-              stroke="#DA4242"
-              strokeWidth="15"
+              fill="none"
             />
           </svg>
         </div>
@@ -112,13 +114,14 @@ export default function Navbar() {
           <LinkText text={"Contact"}></LinkText>
         </div>
         <div className="contact-button-right">
-          <BtnNormal text={"Let’s Talk?"}></BtnNormal>
+          <BtnNormal onClick={openFormModal} text={"Let’s Talk?"}></BtnNormal>
         </div>
         <div className="btn-grp-mobile">
           <div className="contact-button-mobile">
             <BtnNormal
               sx={{ height: "54px", width: "157px", fontSize: "20px" }}
               text={"Let’s Talk?"}
+              onClick={openFormModal}
             ></BtnNormal>
           </div>
           <div onClick={handleMenuClick} className="menu-btn">
