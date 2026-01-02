@@ -4,6 +4,7 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import SplitText from "gsap/SplitText";
 import BtnAnimated from "../../../../Components/Buttons/Animated/BtnAnimated";
+import { openFormModal } from "../../../../Components/Forms/FormContact/FormContact";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -203,6 +204,7 @@ export default function FifthSection() {
                     <h1>{item.price}</h1>
                   </div>
                   <BtnAnimated
+                    onClick={openFormModal}
                     text={"Start A Project"}
                     sx={{ width: "100%", height: "54px" }}
                   />

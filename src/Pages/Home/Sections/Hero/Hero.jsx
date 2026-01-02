@@ -10,6 +10,7 @@ import Marquee from "../../../../Components/MarqueeDirectional/Marquee";
 import SplitText from "gsap/SplitText";
 import CustomEase from "gsap/CustomEase";
 import { Link } from "react-router-dom";
+import { openFormModal } from "../../../../Components/Forms/FormContact/FormContact";
 
 gsap.registerPlugin(SplitText, CustomEase);
 
@@ -124,7 +125,7 @@ export default function Hero() {
           </span>
 
           <div className="btn-hero">
-            <BtnAnimated text={"Get In Touch"} />
+            <BtnAnimated onClick={openFormModal} text={"Get In Touch"} />
           </div>
         </div>
       </div>

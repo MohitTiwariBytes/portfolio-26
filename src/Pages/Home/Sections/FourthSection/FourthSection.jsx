@@ -7,6 +7,7 @@ import regrese from "../../../../assets/Images/regreseProjectPhoto.webp";
 import quickcopies from "../../../../assets/Images/quickCopiesProjectPhoto.webp";
 import coding4good from "../../../../assets/Images/coding4GoodProjectPhoto.webp";
 import BtnAnimated from "../../../../Components/Buttons/Animated/BtnAnimated";
+import { openFormModal } from "../../../../Components/Forms/FormContact/FormContact";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -168,6 +169,7 @@ export default function FourthSection() {
                   <BtnAnimated
                     sx={{ width: "256px", height: "54px" }}
                     fontSize={"25px"}
+                    onClick={openFormModal}
                     text={"Start  a project"}
                   />
                 </div>

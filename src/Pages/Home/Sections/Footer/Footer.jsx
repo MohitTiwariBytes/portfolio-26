@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import "./Footer.css";
 import gsap from "gsap";
 import BtnAnimated from "../../../../Components/Buttons/Animated/BtnAnimated";
+import { openFormModal } from "../../../../Components/Forms/FormContact/FormContact";
 
 export default function Footer() {
   const textRef = useRef(null);
@@ -49,7 +50,7 @@ export default function Footer() {
               <span id="red-txt">Let's turn it into a reality.</span> No
               nonsense, no <z id="strike">bullsh#t</z>
             </h1>
-            <BtnAnimated text={"Get In Touch"} />
+            <BtnAnimated onClick={openFormModal} text={"Get In Touch"} />
           </div>
 
           <div className="copy-email">

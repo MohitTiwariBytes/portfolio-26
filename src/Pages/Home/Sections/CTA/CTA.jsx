@@ -5,6 +5,7 @@ import SplitText from "gsap/SplitText";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import BtnNormal from "../../../../Components/Buttons/Normal/BtnNormal";
 import mascot from "../../../../assets/Images/mascot.png";
+import { openFormModal } from "../../../../Components/Forms/FormContact/FormContact";
 
 gsap.registerPlugin(SplitText, ScrollTrigger);
 
@@ -112,6 +113,7 @@ export default function CTA() {
           <div className="btn-cta">
             <BtnNormal
               sx={{ width: "173px", height: "53px" }}
+              onClick={openFormModal}
               text={"Get in Touch"}
             ></BtnNormal>
           </div>
