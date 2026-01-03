@@ -343,8 +343,8 @@ export default function FormContact() {
           />
           <span id="notice-form">
             By submitting this form, you consent to the collection of your name
-            and email by Mohit Tiwari. Refer to the{" "}
-            <Link to="#">Privacy Policy</Link> for more information.
+            and email by Mohit Tiwari. Your information will be handled
+            responsibly.
           </span>
         </div>
       </div>
