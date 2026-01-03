@@ -62,7 +62,7 @@ export default function Navbar() {
   };
 
   // Check if mobile
-  const isMobile = () => window.innerWidth <= 768;
+  const isMobile = () => window.innerWidth <= 835;
 
   // Desktop scroll with Lenis
   const handleDesktopScroll = (section) => {
