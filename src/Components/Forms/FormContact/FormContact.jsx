@@ -271,7 +271,7 @@ export default function FormContact() {
               <input
                 type="text"
                 name="name"
-                placeholder="John Pork"
+                placeholder="John Doe"
                 required
                 value={formData.name}
                 onChange={handleInputChange}
@@ -283,7 +283,7 @@ export default function FormContact() {
               <input
                 type="email"
                 name="email"
-                placeholder="johnpork@example.com"
+                placeholder="johndoe@example.com"
                 required
                 value={formData.email}
                 onChange={handleInputChange}
