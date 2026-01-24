@@ -6,6 +6,7 @@ import SecondSection from "./Sections/SecondSection/SecondSection";
 import ThirdSection from "./Sections/ThirdSection/ThirdSection";
 import FourthSection from "./Sections/FourthSection/FourthSection";
 import FifthSection from "./Sections/FifthSection/FifthSection";
+import FAQSection from "./Sections/FAQSection/FAQSection";
 import CTA from "./Sections/CTA/CTA";
 import Footer from "./Sections/Footer/Footer";
 import FormContact from "../../Components/Forms/FormContact/FormContact";
@@ -21,6 +22,7 @@ export default function Home() {
       <ThirdSection></ThirdSection>
       <FourthSection></FourthSection>
       <FifthSection></FifthSection>
+      <FAQSection></FAQSection>
       <CTA></CTA>
       <Footer></Footer>
     </div>

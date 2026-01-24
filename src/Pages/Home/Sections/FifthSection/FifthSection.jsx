@@ -40,7 +40,7 @@ const PRICING_LIST = [
       "Legal Pages",
       "CMS Panel",
     ],
-    price: "$2,000",
+    price: "$1,500",
   },
   {
     title: "Full Website",
@@ -48,7 +48,7 @@ const PRICING_LIST = [
     description:
       "Five-page website — more room, more story, less of the boring stuff.",
     scope: ["Up to 10 custom pages", "Legal Pages", "CMS Panel"],
-    price: "$4,000",
+    price: "$3,000",
   },
   {
     title: "Web Experience",
@@ -56,13 +56,9 @@ const PRICING_LIST = [
     description:
       "A web experience built your way — custom everything, from pages to pixels to the fancy 3D stuff.",
     scope: ["Custom amount of pages", "Legal Pages", "CMS Panel"],
-    price: "$7,000+",
+    price: "$5,000+",
   },
 ];
-
-/* =======================
-   COMPONENT
-======================= */
 
 export default function FifthSection() {
   useEffect(() => {
@@ -129,7 +125,7 @@ export default function FifthSection() {
         duration: 0.6,
         ease: "back.out(1.6)",
         stagger: 0.02,
-      }
+      },
     )
       .fromTo(
         "#desc-fifth-section",
@@ -141,7 +137,7 @@ export default function FifthSection() {
           duration: 0.4,
           ease: "back.out(1.6)",
         },
-        0.8
+        0.8,
       )
       .fromTo(
         ".pricing-card",
@@ -154,7 +150,7 @@ export default function FifthSection() {
           ease: "back.out(1.6)",
           stagger: 0.04,
         },
-        0.8
+        0.8,
       );
 
     return () => {
@@ -205,7 +201,7 @@ export default function FifthSection() {
                   </div>
                   <BtnAnimated
                     onClick={openFormModal}
-                    text={"Start A Project"}
+                    text={"Start a project"}
                     sx={{ width: "100%", height: "54px" }}
                   />
                 </div>

@@ -71,7 +71,7 @@ export default function FourthSection() {
         duration: 0.6,
         ease: "back.out(1.6)",
         stagger: 0.02,
-      }
+      },
     );
 
     tl.fromTo(
@@ -84,7 +84,7 @@ export default function FourthSection() {
         duration: 0.4,
         ease: "back.out(1.6)",
       },
-      0.8
+      0.8,
     );
 
     return () => {
@@ -128,7 +128,7 @@ export default function FourthSection() {
               end: "bottom center-=50px",
               scrub: true,
             },
-          }
+          },
         );
 
         triggers.push(anim.scrollTrigger);
@@ -170,7 +170,7 @@ export default function FourthSection() {
                     sx={{ width: "256px", height: "54px" }}
                     fontSize={"25px"}
                     onClick={openFormModal}
-                    text={"Start  a project"}
+                    text={"Start a project"}
                   />
                 </div>
                 <div className="service-right">

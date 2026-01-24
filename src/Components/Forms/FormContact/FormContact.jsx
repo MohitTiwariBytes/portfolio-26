@@ -22,12 +22,10 @@ const firebaseConfig = {
   databaseURL: "https://mohit-tiwari-folio-26-default-rtdb.firebaseio.com",
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 getAnalytics(app);
 const database = getDatabase(app);
 
-// Modal Service
 class FormModalService {
   constructor() {
     this.isOpen = false;
@@ -77,7 +75,6 @@ export default function FormContact() {
     message: "",
   });
 
-  // Subscribe to modal service
   useEffect(() => {
     const unsubscribe = formModalService.subscribe((isOpen) => {
       setIsModalOpen(isOpen);
@@ -85,7 +82,6 @@ export default function FormContact() {
     return unsubscribe;
   }, []);
 
-  // 🔹 Pause main scroll while allowing modal scroll
   useEffect(() => {
     if (!lenis) return;
     if (isModalOpen) {
@@ -95,7 +91,6 @@ export default function FormContact() {
     }
   }, [isModalOpen, lenis]);
 
-  // Force Lenis to stop even if mouse is over a data-lenis-prevent div
   useEffect(() => {
     if (!lenis) return;
     if (!isModalOpen) return;
@@ -107,7 +102,6 @@ export default function FormContact() {
     return () => clearInterval(interval);
   }, [isModalOpen, lenis]);
 
-  // GSAP modal animations
   useEffect(() => {
     CustomEase.create("smoothEase", "0.825, 0.08, 0.04, 1");
     if (!containerRef.current) return;
@@ -118,19 +112,19 @@ export default function FormContact() {
       gsap.fromTo(
         containerRef.current,
         { yPercent: 100 },
-        { yPercent: 0, duration: 0.5, ease: "smoothEase" }
+        { yPercent: 0, duration: 0.5, ease: "smoothEase" },
       );
 
       gsap.fromTo(
         backdropRef.current,
         { opacity: 0 },
-        { opacity: 0, duration: 0.5 }
+        { opacity: 0.5, duration: 0.2, delay: 0.3 },
       );
 
       gsap.fromTo(
         formRef.current,
         { y: 60 },
-        { y: 0, duration: 0.5, ease: "smoothEase" }
+        { y: 0, duration: 0.5, ease: "smoothEase" },
       );
     } else {
       gsap.to(formRef.current, {
@@ -141,7 +135,7 @@ export default function FormContact() {
 
       gsap.to(backdropRef.current, {
         opacity: 0,
-        duration: 0.3,
+        duration: 0.4,
       });
 
       gsap.to(containerRef.current, {
@@ -155,7 +149,6 @@ export default function FormContact() {
     }
   }, [isModalOpen]);
 
-  // Responsive modal positioning
   useEffect(() => {
     const handleResize = () => {
       if (formRef.current) {
@@ -222,8 +215,8 @@ export default function FormContact() {
     }
   };
 
-  const handleBackdropClick = (e) => {
-    if (e.target.classList.contains("main-form-contact")) {
+  const handleContainerClick = (e) => {
+    if (!formRef.current.contains(e.target)) {
       closeFormModal();
     }
   };
@@ -232,8 +225,8 @@ export default function FormContact() {
     <div
       ref={containerRef}
       className={`main-form-contact ${isFixed ? "fixed-mode" : ""}`}
-      style={{ overflowY: "auto" }} // allows modal content scroll
-      onClick={handleBackdropClick}
+      style={{ overflowY: "auto" }}
+      onClick={handleContainerClick}
     >
       <div className="bg-form" ref={backdropRef}></div>
 

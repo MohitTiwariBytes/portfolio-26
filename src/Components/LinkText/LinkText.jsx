@@ -3,7 +3,7 @@ import "./LinkText.css";
 import { Link } from "react-router-dom";
 
 export default function LinkText({ text, to, sx }) {
-  const offsetIncrement = 0.01;
+  const offsetIncrement = 0;
 
   const renderChars = useMemo(() => {
     return [...text].map((char, i) => (
