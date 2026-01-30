@@ -1,0 +1,32 @@
+.main-marquee {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    display: flex;
+    align-items: end;
+}
+
+.marquee-inner {
+    will-change: transform;
+}
+
+.marquee-group {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.content {
+    padding: 0 10px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.content h1{
+    color: black;
+    font-family: "Inter";
+    letter-spacing: -0.02em;
+    font-size: 10vw;
+    font-weight: 500;
+}

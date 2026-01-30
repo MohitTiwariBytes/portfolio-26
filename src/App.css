@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  font-synthesis: none;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  background-color: var(--white);
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@font-face {
+  font-family: "Tropical";
+  src: url("./assets/Fonts/Tropikal-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+}
+
+.tropikal {
+  font-family: "Tropikal", Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  letter-spacing: 0.02em;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+@supports (-webkit-touch-callout: none) {
+  .tropikal {
+    font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+}
+
+:root {
+  --red: #DA4242;
+  --white: #FFFFD4;
+  --accent: #FEF6BB;
+  --black: #000000;
+  --red-stroke: #7D0303;
+  --green: #00C853;
+  --blue: #0D8DFF;
+}
+
+z {
+  opacity: 0.5;
+}
+
+z#strike {
+  text-decoration: line-through;
+}
+
+.seasid {
+  width: 100%;
+  height: 100vh;
+}
+
+#red-txt{
+  color: var(--red);
+}
