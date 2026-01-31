@@ -254,7 +254,12 @@ export default function Navbar() {
   return (
     <div className="main-navbar">
       <div className="navbar">
-        <div onClick={() => handleNavClick("Home")} className="logo-left">
+        <div
+          onClick={() => {
+            window.location.replace("/");
+          }}
+          className="logo-left"
+        >
           <svg
             width="78"
             height="98"
