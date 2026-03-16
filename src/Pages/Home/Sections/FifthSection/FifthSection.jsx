@@ -32,7 +32,7 @@ const CHECK_ICON = (
 const PRICING_LIST = [
   {
     title: "Onepager",
-    duration: "6-8 WEEKS",
+    duration: "1-2 WEEKS",
     description:
       "Your brand’s first step. A sharp, fast one-pager that means business.",
     scope: [
@@ -44,7 +44,7 @@ const PRICING_LIST = [
   },
   {
     title: "Full Website",
-    duration: "8-12 WEEKS",
+    duration: "2-4 WEEKS",
     description:
       "Five-page website — more room, more story, less of the boring stuff.",
     scope: ["Up to 10 custom pages", "Legal Pages", "CMS Panel"],
@@ -52,7 +52,7 @@ const PRICING_LIST = [
   },
   {
     title: "Web Experience",
-    duration: "12-18 WEEKS",
+    duration: "4-6 WEEKS",
     description:
       "A web experience built your way — custom everything, from pages to pixels to the fancy 3D stuff.",
     scope: ["Custom amount of pages", "Legal Pages", "CMS Panel"],
